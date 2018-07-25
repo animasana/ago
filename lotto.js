@@ -1,28 +1,21 @@
-function LottoMatrix(rows, cols, size) {
-    var rowsNum = rows;
-    var colsNum = cols;
-    var sizeNum = size;
+function Lotto(nRows, nCols, nSize) {
+    this.nRows = nRows;
+    this.nCols = nCols;
+    this.nSize = nSize;
 
-    this.numsChosen = new Array(rowsNum);
-    for (var i = 0; i < rowsNum; i++) {
-        this.numsChosen[i] = new Array(colsNum);
-    }
-
-    this.getRows = function () { return rowsNum; }
-    this.getCols = function () { return colsNum; }
-    this.getSize = function () { return sizeNum; }
+    this.lottoMatrix = new Array(nRows);
+    for (var i = 0; i < nRows; i++)
+        this.lottoMatrix[i] = new Array(nCols);
 }
 
-LottoMatrix.prototype.sample = function () {
-    var numOfBalls = [];
+Lotto.prototype.sample = function () {
+    var initSeq = [];
 
-    for (var i = 0; i < this.numsChosen.length; i++) {
-        reset(numOfBalls, this.getSize());
-        for (var j = 0; j < this.numsChosen[i].length; j++) {
-            this.numsChosen[i][j] = numOfBalls[pvt = Math.floor(numOfBalls.length * Math.random())];
-            numOfBalls.splice(pvt, 1);
-        }
-        numOfBalls = [];
+    for (var i = 0; i < this.lottoMatrix.length; i++) {
+        reset(initSeq, this.nSize);
+        for (var j = 0; j < this.lottoMatrix[i].length; j++)
+            this.lottoMatrix[i][j] = initSeq.splice(Math.floor(initSeq.length * Math.random()), 1);
+        initSeq = [];
     }
 
     function reset(arr, sz) {
@@ -32,24 +25,31 @@ LottoMatrix.prototype.sample = function () {
     }
 }
 
-LottoMatrix.prototype.sortMatrix = function () {
-    for (var i = 0; i < this.numsChosen.length; i++) {
-        this.numsChosen[i].sort(function (first, second) {
+Lotto.prototype.sortMatrix = function () {
+    for (var i = 0; i < this.lottoMatrix.length; i++) {
+        this.lottoMatrix[i].sort(function (first, second) {
             return first - second;
         });
     }
 }
 
-LottoMatrix.prototype.show = function() {
-    var fig = Math.floor(logB(10, this.getSize())) + 1;
-    for (var i = 0; i < this.numsChosen.length; i++) {
-        for (const element of this.numsChosen[i]) {
+Lotto.prototype.lottoPrint = function() {
+    var fig = Math.floor(logB(10, this.nSize)) + 1;
+    for (var i = 0; i < this.lottoMatrix.length; i++) {
+        for (const element of this.lottoMatrix[i]) {
             document.write(pad(element, fig) + " ");
         }
-        document.write("<br />");
+        document.write("<br>");
     }
-    document.write("<br />");
+    document.write("<br>");
 }
+
+Lotto.prototype.show = function() {
+    this.sample()
+    this.sortMatrix()
+    this.lottoPrint()
+}
+
 
 function logB(base, x) {
     return Math.log(x) / Math.log(base);
@@ -60,7 +60,6 @@ function pad(n, fig) {
     return n.length >= fig ? n : new Array(fig - n.length + 1).join("0") + n;
 }
 
-lotto = new LottoMatrix(5, 6, 45);
-lotto.sample();
-lotto.sortMatrix();
-lotto.show();
+new Lotto(5, 6, 45).show();
+
+new Lotto(11, 11, 121).show();
