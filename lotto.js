@@ -42,7 +42,7 @@ Lotto.prototype.lottoPrint = function() {
     var fig = Math.floor(Math.log10(this.nSize)) + 1;
     for (var i = 0; i < this.lottoMatrix.length; i++) {
         for (const element of this.lottoMatrix[i]) {
-            document.write(pad(element, fig) + " ");
+            document.write(this.pad(element, fig) + " ");
         }
         document.write("<br>");
     }
