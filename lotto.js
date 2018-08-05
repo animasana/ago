@@ -1,11 +1,16 @@
 function Lotto(nRows, nCols, nSize) {
-    this.nRows = nRows;
-    this.nCols = nCols;
-    this.nSize = nSize;
+    if(nRows >= 1 && nCols >= 1 && nSize >= 1 && nCols <= nSize) {
+        this.nRows = nRows;
+        this.nCols = nCols;
+        this.nSize = nSize;
 
-    this.lottoMatrix = new Array(nRows);
-    for (var i = 0; i < nRows; i++)
-        this.lottoMatrix[i] = new Array(nCols);
+        this.lottoMatrix = new Array(nRows);
+        for(var i = 0; i < nRows; i++)
+            this.lottoMatrix[i] = new Array(nCols);
+    }
+    else {
+        throw "Illegal Argument!!!"
+    }
 }
 
 Lotto.prototype.sample = function () {
@@ -34,7 +39,7 @@ Lotto.prototype.sortMatrix = function () {
 }
 
 Lotto.prototype.lottoPrint = function() {
-    var fig = Math.floor(logB(10, this.nSize)) + 1;
+    var fig = Math.floor(log10(this.nSize)) + 1;
     for (var i = 0; i < this.lottoMatrix.length; i++) {
         for (const element of this.lottoMatrix[i]) {
             document.write(pad(element, fig) + " ");
@@ -50,12 +55,7 @@ Lotto.prototype.show = function() {
     this.lottoPrint()
 }
 
-
-function logB(base, x) {
-    return Math.log(x) / Math.log(base);
-}
-
-function pad(n, fig) {
+Lotto.prototype.pad = function(n, fig) {
     n = n + "";
     return n.length >= fig ? n : new Array(fig - n.length + 1).join("0") + n;
 }
