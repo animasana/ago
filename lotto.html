@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="ko">
 <head>
-    <title>WEB1 - html</title>
     <meta charset="utf-8">
+    <title>WEB1 - html</title>
+    <script src="lotto.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,10 @@
 
     <h2>Lotto 6 45</h2>
     <p>
-        <script src="lotto.js"></script>
+        <script>
+            new Lotto(5, 6, 45).show();
+            new Lotto(11, 11, 121).show();
+        </script>
         <form>
             <input type="button" value="로또 재발행" onClick="window.location.reload()">
         </form>
