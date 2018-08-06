@@ -59,7 +59,3 @@ Lotto.prototype.pad = function(n, fig) {
     n = n + "";
     return n.length >= fig ? n : new Array(fig - n.length + 1).join("0") + n;
 }
-
-new Lotto(5, 6, 45).show();
-
-new Lotto(11, 11, 121).show();
