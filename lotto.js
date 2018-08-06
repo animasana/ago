@@ -13,7 +13,7 @@ function Lotto(nRows, nCols, nSize) {
     }
 }
 
-Lotto.prototype.sample = function () {
+Lotto.prototype.sample = function() {
     var initSeq = [];
 
     for (var i = 0; i < this.lottoMatrix.length; i++) {
@@ -30,7 +30,7 @@ Lotto.prototype.sample = function () {
     }
 }
 
-Lotto.prototype.sortMatrix = function () {
+Lotto.prototype.sortMatrix = function() {
     for (var i = 0; i < this.lottoMatrix.length; i++) {
         this.lottoMatrix[i].sort(function (first, second) {
             return first - second;
