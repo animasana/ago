@@ -31,22 +31,22 @@ Lotto.prototype.sample = function() {
 }
 
 Lotto.prototype.sortMatrix = function() {
-    for (var i = 0; i < this.lottoMatrix.length; i++) {
-        this.lottoMatrix[i].sort(function (first, second) {
+    this.lottoMatrix.forEach(function(item) {
+        item.sort(function (first, second) {
             return first - second;
         });
-    }
+    });
 }
 
 Lotto.prototype.lottoPrint = function() {
-    var fig = Math.floor(Math.log10(this.nSize)) + 1;
-    for (var i = 0; i < this.lottoMatrix.length; i++) {
-        for (const element of this.lottoMatrix[i]) {
-            document.write(this.pad(element, fig) + " ");
-        }
-        document.write("<br>");
-    }
-    document.write("<br>");
+    let fig = Math.floor(Math.log10(this.nSize)) + 1;
+    this.lottoMatrix.forEach(function(item) {
+        item.forEach(function(item) {
+            document.body.innerHTML += this.pad(item, fig) + " ";
+        }, this);
+        document.body.innerHTML += "<br>";
+    }, this);
+    document.body.innerHTML += "<br>";
 }
 
 Lotto.prototype.show = function() {

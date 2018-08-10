@@ -9,7 +9,7 @@
     <script src="lotto.js"></script>
     <script>
         ////////////////////////////////////////////////////////
-        // window.onload = init;        
+        // window.onload = init;
         // function init() {
         //     let re = document.getElementById("btn_reload");
         //     re.onclick = clickHandler;
@@ -20,19 +20,24 @@
         /////////////////////////////////////////////////////////
         // $(document).ready(init);
         // function init() {
-        //     $('#btn_reload').click(clickHandler);            
+        //     $('#btn_reload').click(clickHandler);
         // }
         // function clickHandler() {
         //     location.reload();
-        // }        
+        // }
         //////////////////////////////////////////////////////////
         $(document).ready(function() {
+            new Lotto(5, 6, 45).show();
+            new Lotto(11, 11, 121).show();
+
+            document.body.innerHTML += '<input type="button" id="btn_reload" value="로또 재발행">';
+
             $('#btn_reload').click(function() {
                 location.reload();
             });
         });
 
-        
+
     </script>
 </head>
 
@@ -48,16 +53,6 @@
             </ol>
         </nav>
     </header>
-
-    <h2>Lotto 6 45</h2>
-    <p>
-        <script>
-            new Lotto(5, 6, 45).show();
-            new Lotto(11, 11, 121).show();
-        </script>
-        <!-- <input type="button" id="btn_reload" value="로또 재발행" onClick="window.location.reload()"> -->
-        <input type="button" id="btn_reload" value="로또 재발행">        
-    </p>
-
+    <h2>Lotto 6 45</h2>    
 </body>
 </html>
