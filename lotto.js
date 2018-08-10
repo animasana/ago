@@ -5,26 +5,26 @@ function Lotto(nRows, nCols, nSize) {
         this.nSize = nSize;
 
         this.lottoMatrix = new Array(nRows);
-        for(var i = 0; i < nRows; i++)
+        for(let i = 0; i < nRows; i++)
             this.lottoMatrix[i] = new Array(nCols);
     }
     else {
-        throw "Illegal Argument!!!"
+        throw "Illegal Argument!!!";
     }
 }
 
 Lotto.prototype.sample = function() {
-    var initSeq = [];
+    let initSeq = [];
 
-    for (var i = 0; i < this.lottoMatrix.length; i++) {
+    for (let i = 0; i < this.lottoMatrix.length; i++) {
         reset(initSeq, this.nSize);
-        for (var j = 0; j < this.lottoMatrix[i].length; j++)
+        for (let j = 0; j < this.lottoMatrix[i].length; j++)
             this.lottoMatrix[i][j] = initSeq.splice(Math.floor(initSeq.length * Math.random()), 1);
         initSeq = [];
     }
 
     function reset(arr, sz) {
-        for (var i = 0; i < sz; i++) {
+        for (let i = 0; i < sz; i++) {
             arr.push(i + 1);
         }
     }
@@ -50,9 +50,9 @@ Lotto.prototype.lottoPrint = function() {
 }
 
 Lotto.prototype.show = function() {
-    this.sample()
-    this.sortMatrix()
-    this.lottoPrint()
+    this.sample();
+    this.sortMatrix();
+    this.lottoPrint();
 }
 
 Lotto.prototype.pad = function(n, fig) {
