@@ -6,7 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
     crossorigin="anonymous"></script>
-    <script src="js/lotto.js"></script>
+    <script src="lotto.js"></script>
+    <script src="printMatrix.js"></script>
     <script>
         ////////////////////////////////////////////////////////
         // window.onload = init;
@@ -27,8 +28,8 @@
         // }
         //////////////////////////////////////////////////////////
         $(document).ready(function() {
-            new Lotto(5, 6, 45).show();
-            new Lotto(11, 11, 121).show();
+            printLotto("root", new Lotto(5, 6, 45).getLottoMatrix());
+            printLotto("root", new Lotto(11, 11, 121).getLottoMatrix());           
 
             //document.body.innerHTML += '<input type="button" id="btn_reload" value="로또 재발행">';
             $("<input>").attr("type", "button")
@@ -36,8 +37,10 @@
                         .attr("value", "로또 재발행")
                         .appendTo("body");
 
-            $('#btn_reload').click(function(event) {
-                location.reload();
+            $('#btn_reload').click(function() {
+                document.getElementById("root").innerHTML = "";
+                printLotto("root", new Lotto(5, 6, 45).getLottoMatrix());
+                printLotto("root", new Lotto(11, 11, 121).getLottoMatrix());
             });
         });
     </script>
@@ -55,6 +58,7 @@
             </ol>
         </nav>
     </header>
-    <h2>Lotto 6 45</h2>    
+    <h2>Lotto 6 45</h2> 
+    <div id="root"></div>   
 </body>
 </html>
