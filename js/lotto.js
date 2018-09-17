@@ -1,5 +1,5 @@
-function Lotto(nRows, nCols, nSize) {
-    if(nRows >= 1 && nCols >= 1 && nSize >= 1 && nCols <= nSize) {
+function Lotto (nRows, nCols, nSize) {
+    if (nRows >= 1 && nCols >= 1 && nSize >= 1 && nCols <= nSize) {
         this.nRows = nRows;
         this.nCols = nCols;
         this.nSize = nSize;
@@ -13,7 +13,7 @@ function Lotto(nRows, nCols, nSize) {
     }
 }
 
-Lotto.prototype.sample = function() {
+Lotto.prototype.sample = function () {
     let initSeq = [];
 
     for (let i = 0; i < this.lottoMatrix.length; i++) {
@@ -23,14 +23,14 @@ Lotto.prototype.sample = function() {
         initSeq = [];
     }
 
-    function reset(arr, sz) {
+    function reset (arr, sz) {
         for (let i = 0; i < sz; i++) {
             arr.push(i + 1);
         }
     }
 }
 
-Lotto.prototype.sortMatrix = function() {
+Lotto.prototype.sortMatrix = function () {
     this.lottoMatrix.forEach(function(item) {
         item.sort(function (first, second) {
             return first - second;
@@ -38,10 +38,10 @@ Lotto.prototype.sortMatrix = function() {
     });
 }
 
-Lotto.prototype.lottoPrint = function() {
+Lotto.prototype.lottoPrint = function () {
     let fig = Math.floor(Math.log10(this.nSize)) + 1;
-    this.lottoMatrix.forEach(function(item) {
-        item.forEach(function(item) {
+    this.lottoMatrix.forEach(function (item) {
+        item.forEach(function (item) {
             document.body.innerHTML += this.pad(item, fig) + " ";
         }, this);
         document.body.innerHTML += "<br>";
@@ -49,13 +49,19 @@ Lotto.prototype.lottoPrint = function() {
     document.body.innerHTML += "<br>";
 }
 
-Lotto.prototype.show = function() {
+Lotto.prototype.getLottoMatrix = function () {
+    this.sample()
+    this.sortMatrix()
+    return { matrix: this.lottoMatrix, size: this.nSize }
+}
+
+Lotto.prototype.show = function () {
     this.sample();
     this.sortMatrix();
     this.lottoPrint();
 }
 
-Lotto.prototype.pad = function(n, fig) {
+Lotto.prototype.pad = function (n, fig) {
     n = n + "";
     return n.length >= fig ? n : new Array(fig - n.length + 1).join("0") + n;
 }
