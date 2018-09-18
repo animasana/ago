@@ -6,8 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
     crossorigin="anonymous"></script>
-    <script src="js/lotto.js"></script>
-    <script src="js/printMatrix.js"></script>
+    <script src="js/lotto.js"></script>    
     <script>
         ////////////////////////////////////////////////////////
         // window.onload = init;
@@ -28,19 +27,13 @@
         // }
         //////////////////////////////////////////////////////////
         $(document).ready(function() {
-            printLotto("root", new Lotto(5, 6, 45).getLottoMatrix());
-            printLotto("root", new Lotto(11, 11, 121).getLottoMatrix());           
-
-            //document.body.innerHTML += '<input type="button" id="btn_reload" value="로또 재발행">';
-            // $("<input>").attr("type", "button")
-            //             .attr("id", "btn_reload")
-            //             .attr("value", "로또 재발행")
-            //             .appendTo("body");
+            new Lotto(5, 6, 45).show("root")
+            new Lotto(11, 11, 121).show("root");            
 
             $('#btn_reload').click(function() {
-                document.getElementById("root").innerHTML = "";
-                printLotto("root", new Lotto(5, 6, 45).getLottoMatrix());
-                printLotto("root", new Lotto(11, 11, 121).getLottoMatrix());
+                $("#root").empty();
+                new Lotto(5, 6, 45).show("root")
+                new Lotto(11, 11, 121).show("root");           
             });
         });
     </script>
