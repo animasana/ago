@@ -9,24 +9,24 @@ function Lotto (nRows, nCols, nSize) {
             this.lottoMatrix[i] = new Array(nCols);
     }
     else {
-        throw "Illegal Argument!!!";
+        throw Error("Illegal Argument!!!");
     }
 }
 
 Lotto.prototype.sample = function () {
-    let initSeq = [];
+    const initSeq = [];
 
-    for (let i = 0; i < this.lottoMatrix.length; i++) {
-        reset(initSeq, this.nSize);
-        for (let j = 0; j < this.lottoMatrix[i].length; j++)
-            this.lottoMatrix[i][j] = initSeq.splice(Math.floor(initSeq.length * Math.random()), 1);
-        initSeq = [];
-    }
-
-    function reset (arr, sz) {
-        for (let i = 0; i < sz; i++) {
+    const reset =  (arr) => {
+        for (let i = 0; i < this.nSize; i++) {
             arr.push(i + 1);
         }
+    }
+
+    for (let i = 0; i < this.lottoMatrix.length; i++) {
+        reset(initSeq);
+        for (let j = 0; j < this.lottoMatrix[i].length; j++)
+            this.lottoMatrix[i][j] = initSeq.splice(Math.floor(initSeq.length * Math.random()), 1);
+        initSeq.length = 0;
     }
 }
 
