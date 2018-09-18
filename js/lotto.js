@@ -16,7 +16,7 @@ function Lotto (nRows, nCols, nSize) {
 Lotto.prototype.sample = function () {
     const initSeq = [];
 
-    const reset =  (arr) => {
+    const reset = (arr) => {
         for (let i = 0; i < this.nSize; i++) {
             arr.push(i + 1);
         }
@@ -38,30 +38,27 @@ Lotto.prototype.sortMatrix = function () {
     });
 }
 
-Lotto.prototype.lottoPrint = function () {
-    let fig = Math.floor(Math.log10(this.nSize)) + 1;
-    this.lottoMatrix.forEach(function (item) {
-        item.forEach(function (item) {
-            document.body.innerHTML += this.pad(item, fig) + " ";
-        }, this);
-        document.body.innerHTML += "<br>";
-    }, this);
-    document.body.innerHTML += "<br>";
-}
-
-Lotto.prototype.getLottoMatrix = function () {
-    this.sample()
-    this.sortMatrix()
-    return { matrix: this.lottoMatrix, size: this.nSize }
-}
-
-Lotto.prototype.show = function () {
+Lotto.prototype.show = function (id) {
     this.sample();
     this.sortMatrix();
-    this.lottoPrint();
+    this.printToBrowser(id);
 }
 
 Lotto.prototype.pad = function (n, fig) {
     n = n + "";
     return n.length >= fig ? n : new Array(fig - n.length + 1).join("0") + n;
+}
+
+Lotto.prototype.printToBrowser = function (id) {
+    let output = "";
+
+    const fig = Math.floor(Math.log10(this.nSize)) + 1;
+    for (const aRow of this.lottoMatrix) {
+        for (const item of aRow) {
+            output += this.pad(item, fig) + " ";        
+        }
+        output += "<br />";
+    }    
+    output += "<br />";    
+    document.getElementById(id).innerHTML += output;
 }
