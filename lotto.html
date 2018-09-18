@@ -32,10 +32,10 @@
             printLotto("root", new Lotto(11, 11, 121).getLottoMatrix());           
 
             //document.body.innerHTML += '<input type="button" id="btn_reload" value="로또 재발행">';
-            $("<input>").attr("type", "button")
-                        .attr("id", "btn_reload")
-                        .attr("value", "로또 재발행")
-                        .appendTo("body");
+            // $("<input>").attr("type", "button")
+            //             .attr("id", "btn_reload")
+            //             .attr("value", "로또 재발행")
+            //             .appendTo("body");
 
             $('#btn_reload').click(function() {
                 document.getElementById("root").innerHTML = "";
@@ -59,6 +59,7 @@
         </nav>
     </header>
     <h2>Lotto 6 45</h2> 
-    <div id="root"></div>   
+    <div id="root"></div>
+    <button id="btn_reload">로또 재발행</button>   
 </body>
 </html>
