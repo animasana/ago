@@ -67,7 +67,3 @@ Lotto.prototype.logErrors = function(e, disp) {
     console.log(e);
     console.log('\n');
 }
-
-Lotto.prototype.logB = function(base, x) {
-    return Math.log(x) / Math.log(base);    
-}
