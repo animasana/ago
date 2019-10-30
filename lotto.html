@@ -28,6 +28,10 @@
 </body>
 <script>
     disp = document.querySelector('#root');
-    new Lotto(5, 6, 45).show(disp);
+    btn = document.querySelector('#btn_reload');
+    
+    btn.addEventListener('click', () => {
+        new Lotto(5, 6, 45).show(disp);
+    });
 </script>
 </html>
