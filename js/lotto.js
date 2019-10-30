@@ -46,7 +46,7 @@ Lotto.prototype.print = function(disp) {
         });
         disp.innerHTML += '<br>';
     });
-    disp.innerHTML += '<br>';    
+    //disp.innerHTML += '<br>';    
 }
 
 Lotto.prototype.show = function(disp) {
