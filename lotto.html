@@ -4,39 +4,10 @@
     <meta charset="utf-8">
     <title>WEB1 - html</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-    crossorigin="anonymous"></script>
-    <script src="js/lotto.js"></script>    
-    <script>
-        ////////////////////////////////////////////////////////
-        // window.onload = init;
-        // function init() {
-        //     let re = document.getElementById("btn_reload");
-        //     re.onclick = clickHandler;
-        // }
-        // function clickHandler() {
-        //     window.location.reload();
-        // }
-        /////////////////////////////////////////////////////////
-        // $(document).ready(init);
-        // function init() {
-        //     $('#btn_reload').click(clickHandler);
-        // }
-        // function clickHandler() {
-        //     location.reload();
-        // }
-        //////////////////////////////////////////////////////////
-        $(document).ready(function() {
-            new Lotto(5, 6, 45).show("root")
-            new Lotto(11, 11, 121).show("root");            
-
-            $('#btn_reload').click(function() {
-                $("#root").empty();
-                new Lotto(5, 6, 45).show("root")
-                new Lotto(11, 11, 121).show("root");           
-            });
-        });
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous">
     </script>
+    <script src="js/lotto.js"></script>    
 </head>
 
 <body>
@@ -55,4 +26,8 @@
     <div id="root"></div>
     <button id="btn_reload">로또 재발행</button>   
 </body>
+<script>
+    disp = document.querySelector('#root');
+    new Lotto(5, 6, 45).show(disp);
+</script>
 </html>
