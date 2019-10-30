@@ -9,8 +9,11 @@
     </script>
     <script src="js/lotto.js"></script>
     <style>
-        button {
+        #btn_div {
+            margin:  0 auto;
             padding: 8px;
+            width:   100px;
+            height:  50%;
         }
     </style>    
 </head>
@@ -29,7 +32,9 @@
     </header>
     <h2>Lotto 6 45</h2> 
     <div id="root"></div>
-    <button id="btn_reload">로또 재발행</button>   
+    <div id='btn_div'>
+        <button id="btn_reload">로또 재발행</button>
+    </div>
 </body>
 <script>
     disp = document.querySelector('#root');
