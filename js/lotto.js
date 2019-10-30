@@ -4,7 +4,7 @@ function Lotto(nRows, nCols, nSize) {
     this.nSize = nSize;
 
     this.matrix = new Array(nRows).fill();
-    for(let i = 0; i < nRows; i++)
+    for (let i = 0; i < nRows; i++)
         this.matrix[i] = new Array(nCols).fill();
 }
 
